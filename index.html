@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>MAISON&nbsp;NUE — Considered Clothing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Work+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="site-header">
+    <div class="header-row">
+      <button class="icon-btn menu-toggle" id="menuToggle" aria-label="Open menu">☰</button>
+      <a href="#" class="wordmark">MAISON <span>NUE</span></a>
+      <nav class="main-nav" id="mainNav">
+        <a href="#" data-cat="">All</a>
+        <a href="#" data-cat="Women">Women</a>
+        <a href="#" data-cat="Men">Men</a>
+        <a href="#" data-cat="Footwear">Footwear</a>
+        <a href="#" data-cat="Accessories">Accessories</a>
+      </nav>
+      <div class="header-actions">
+        <input type="search" id="searchInput" class="search-input" placeholder="Search pieces…" />
+        <button class="icon-btn" id="accountBtn" aria-label="Account">◐</button>
+        <button class="icon-btn" id="cartBtn" aria-label="Cart">
+          BAG <span id="cartCount" class="cart-count">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <div class="hero-copy">
+      <p class="eyebrow">Autumn Collection — No. 04</p>
+      <h1>Clothes worth<br />keeping the tag on.</h1>
+      <p class="hero-sub">Small-batch pieces, cut from natural fibers, priced honestly. Every garment ships with its full story attached — literally.</p>
+      <a href="#catalog" class="btn-primary">Shop the collection</a>
+    </div>
+    <div class="hero-tag" aria-hidden="true">
+      <div class="tag-card">
+        <div class="tag-hole"></div>
+        <p class="tag-label">STYLE</p>
+        <p class="tag-name">Linen Wrap Dress</p>
+        <p class="tag-price">₹2,499</p>
+        <p class="tag-meta">100% LINEN — LOT 04A</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CATALOG ===== -->
+  <main id="catalog" class="catalog">
+    <div class="catalog-heading">
+      <h2 id="catalogTitle">All pieces</h2>
+      <p id="catalogCount" class="muted"></p>
+    </div>
+    <div id="productGrid" class="product-grid">
+      <!-- product cards injected by js/app.js -->
+    </div>
+    <p id="emptyState" class="empty-state" hidden>No pieces matched your search.</p>
+  </main>
+
+  <footer class="site-footer">
+    <p>MAISON NUE — a project scaffold. Not a real store; product data is seeded for demo purposes.</p>
+  </footer>
+
+  <!-- ===== CART DRAWER ===== -->
+  <aside id="cartDrawer" class="drawer" aria-hidden="true">
+    <div class="drawer-head">
+      <h3>Your bag</h3>
+      <button class="icon-btn" id="closeCart" aria-label="Close bag">✕</button>
+    </div>
+    <div id="cartItems" class="cart-items"></div>
+    <div class="drawer-foot">
+      <div class="cart-total-row">
+        <span>Subtotal</span>
+        <span id="cartTotal">₹0</span>
+      </div>
+      <button id="checkoutBtn" class="btn-primary full">Checkout</button>
+    </div>
+  </aside>
+  <div id="drawerOverlay" class="overlay" hidden></div>
+
+  <!-- ===== AUTH MODAL ===== -->
+  <div id="authModal" class="modal" hidden>
+    <div class="modal-card">
+      <button class="icon-btn modal-close" id="closeAuth" aria-label="Close">✕</button>
+      <div class="modal-tabs">
+        <button class="tab-btn active" data-tab="login">Sign in</button>
+        <button class="tab-btn" data-tab="register">Create account</button>
+      </div>
+
+      <form id="loginForm" class="auth-form">
+        <label>Email <input type="email" name="email" required /></label>
+        <label>Password <input type="password" name="password" required /></label>
+        <p class="form-error" id="loginError"></p>
+        <button type="submit" class="btn-primary full">Sign in</button>
+      </form>
+
+      <form id="registerForm" class="auth-form" hidden>
+        <label>Name <input type="text" name="name" required /></label>
+        <label>Email <input type="email" name="email" required /></label>
+        <label>Password <input type="password" name="password" minlength="6" required /></label>
+        <p class="form-error" id="registerError"></p>
+        <button type="submit" class="btn-primary full">Create account</button>
+      </form>
+
+      <div id="accountPanel" class="auth-form" hidden>
+        <p id="accountGreeting"></p>
+        <button id="logoutBtn" class="btn-secondary full">Sign out</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== CHECKOUT MODAL ===== -->
+  <div id="checkoutModal" class="modal" hidden>
+    <div class="modal-card">
+      <button class="icon-btn modal-close" id="closeCheckout" aria-label="Close">✕</button>
+      <h3>Shipping details</h3>
+      <form id="checkoutForm" class="auth-form">
+        <label>Address line <input type="text" name="line1" required /></label>
+        <label>City <input type="text" name="city" required /></label>
+        <label>State <input type="text" name="state" required /></label>
+        <label>Pincode <input type="text" name="pincode" required /></label>
+        <label>Country <input type="text" name="country" value="India" required /></label>
+        <p class="form-error" id="checkoutError"></p>
+        <button type="submit" class="btn-primary full">Place order</button>
+      </form>
+    </div>
+  </div>
+
+  <div id="toast" class="toast" hidden></div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
