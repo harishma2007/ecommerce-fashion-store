@@ -1,5 +1,5 @@
 /* ===== Config ===== */
-const API_BASE = 'http://localhost:5000/api';
+const API_BASE = 'http://ecommerce-fashion-store.onrender.com/api';
 
 /* ===== State (kept in memory + localStorage for persistence across reloads) ===== */
 let products = [];
